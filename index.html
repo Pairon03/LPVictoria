@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Victória Azevedo · Consultoria de AI Commerce</title>
+<meta name="description" content="Prepare sua marca para a descoberta, recomendação e compra mediadas por inteligência artificial.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FEEFDD;--ink:#000;--rose:#E7B2A4;--mut:#5a4f46;--line:#e3d3bf;--f:'Geist',system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--m:clamp(20px,4vw,64px);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#FEEFDD;--ink:#000}}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.5 var(--f);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.pill{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 14px;border-radius:99px;background:#fff;font-size:13px;transition:.25s;white-space:nowrap}
+.pill:hover{background:var(--ink);color:var(--bg)}
+.btn{display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 28px;border-radius:99px;background:var(--ink);color:var(--bg);font-weight:500;font-size:16px;transition:.25s}
+.btn:hover{transform:translateY(-2px);background:#222}
+.btn.rose{background:var(--rose);color:var(--ink)}.btn.rose:hover{background:#f0c3b6}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}.btn.ghost:hover{background:var(--ink);color:var(--bg)}
+nav{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:calc(18px + env(safe-area-inset-top,0px)) var(--m) 18px;transition:transform .4s}
+nav.hide{transform:translateY(-120%)}nav.veil{background:linear-gradient(var(--bg) 55%,transparent)}
+.logo{font-weight:500;font-size:17px;letter-spacing:-.02em}.nv{display:flex;gap:8px}
+@media(max-width:640px){.nv .pill:not(.wa){display:none}.pill{height:30px}}
+.tun{height:300vh;position:relative}
+.stick{position:sticky;top:0;height:100svh;overflow:hidden}
+canvas{position:absolute;inset:0;width:100%;height:100%}
+.halo{position:absolute;inset:0;background:radial-gradient(ellipse 42% 38% at 50% 50%,var(--bg) 35%,transparent 100%);pointer-events:none}
+.ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 var(--m);gap:26px}
+.ov h1,.ov h2{font-weight:500;letter-spacing:-.045em;line-height:1.02;font-size:clamp(34px,5.6vw,92px);max-width:15em}
+.ov p{max-width:34em;font-size:clamp(16px,1.35vw,20px);color:var(--mut)}
+.ov .row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.ov em,h2 em{font-style:normal;background:linear-gradient(transparent 60%,var(--rose) 60%)}
+#o2{opacity:0;pointer-events:none}
+.hint{position:absolute;left:var(--m);right:var(--m);bottom:calc(22px + env(safe-area-inset-bottom,0px));display:flex;justify-content:space-between;font-size:13px}
+.hint span{background:#FEEFDDd1;backdrop-filter:blur(10px);padding:6px 12px;border-radius:99px}
+.bar{position:absolute;left:0;bottom:0;height:1px;background:var(--ink);width:0}
+section.s{padding:clamp(80px,12vw,180px) var(--m)}
+.lab{font-size:13px;color:var(--mut);margin-bottom:22px;display:block}
+h2.big{font-weight:500;letter-spacing:-.04em;line-height:1.04;font-size:clamp(34px,5vw,84px);max-width:16em}
+.shift{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:56px;border-top:1px solid var(--ink)}
+.shift>div{padding:28px 28px 28px 0}.shift>div+div{padding-left:28px;border-left:1px solid var(--ink)}
+.shift b{display:block;font-weight:500;font-size:clamp(24px,2.6vw,42px);letter-spacing:-.035em;line-height:1.1;margin:8px 0 12px}
+.shift p{color:var(--mut);max-width:26em}.shift .new b{background:linear-gradient(transparent 62%,var(--rose) 62%);display:inline}
+.lead{margin-top:40px;max-width:36em;font-size:clamp(18px,1.6vw,24px);line-height:1.4}
+.sv{margin-top:56px;border-top:1px solid var(--line)}
+.r{position:relative;display:grid;grid-template-columns:7% 38% 1fr;gap:16px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line);overflow:visible;isolation:isolate}
+.r::before{content:"";position:absolute;top:0;bottom:0;left:calc(-1*var(--m));right:calc(-1*var(--m));background:var(--rose);transform:scaleY(0);transform-origin:center;transition:transform .35s;z-index:-1}
+.r:hover::before,.r:focus-within::before{transform:scaleY(1)}
+.r i{font-style:normal;font-size:13px;color:var(--mut)}.r h3{font-weight:500;font-size:clamp(24px,2.7vw,44px);letter-spacing:-.04em;line-height:1.05}.r p{color:var(--mut);max-width:30em}.r:hover p,.r:hover i{color:var(--ink)}
+@media(max-width:760px){.shift{grid-template-columns:1fr}.shift>div+div{border-left:0;padding-left:0;border-top:1px solid var(--ink)}.r{grid-template-columns:1fr;gap:6px}}
+.dark{background:var(--ink);color:var(--bg)}.dark .lab,.dark p{color:#cdbba5}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px}
+.st{padding:24px 24px 0 0;border-top:1px solid #4a423b;position:relative}
+.st::before{content:"";position:absolute;top:-4px;left:0;width:7px;height:7px;border-radius:50%;background:var(--rose)}
+.st b{display:block;font-weight:500;font-size:clamp(22px,2vw,32px);letter-spacing:-.03em;margin:6px 0 10px}
+@media(max-width:860px){.steps{grid-template-columns:1fr 1fr;row-gap:36px}}@media(max-width:520px){.steps{grid-template-columns:1fr}}
+.faq{margin-top:48px;border-top:1px solid var(--ink)}
+details{border-bottom:1px solid var(--line);padding:22px 0}
+summary{cursor:pointer;list-style:none;font-weight:500;font-size:clamp(20px,2vw,30px);letter-spacing:-.03em;display:flex;justify-content:space-between;gap:20px}
+summary::after{content:"+";transition:.2s}details[open] summary::after{transform:rotate(45deg)}
+details p{margin-top:12px;color:var(--mut);max-width:42em}
+.cta{text-align:center;padding:clamp(90px,13vw,200px) var(--m) 40px}
+.cta h2{font-weight:500;letter-spacing:-.05em;line-height:1;font-size:clamp(40px,7.4vw,130px);max-width:11em;margin:0 auto 28px}
+.cta h2 em{background:none;color:var(--rose)}
+.cta p{margin:0 auto 34px;max-width:32em;font-size:18px}
+.cta .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.ct{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:44px;font-size:15px}
+.ct a{border-bottom:1px solid #6b5f53;padding-bottom:2px;transition:.2s}.ct a:hover{border-color:var(--rose);color:var(--rose)}
+footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:40px var(--m) calc(40px + env(safe-area-inset-bottom,0px));font-size:13px;color:#a8977f}
+.fab{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;height:50px;padding:0 20px;border-radius:99px;background:var(--ink);color:var(--bg);display:flex;align-items:center;gap:8px;font-weight:500;font-size:14px;box-shadow:0 8px 24px #0003;transition:.3s;opacity:0;transform:translateY(20px);pointer-events:none}
+.fab.on{opacity:1;transform:none;pointer-events:auto}.fab:hover{background:var(--rose);color:#000}
+body::before{content:"";position:fixed;inset:-25%;z-index:-1;pointer-events:none;background:radial-gradient(40% 35% at 25% 25%,#E7B2A4aa,transparent 70%),radial-gradient(35% 35% at 75% 65%,#ffd5b8aa,transparent 70%),radial-gradient(30% 30% at 55% 15%,#fff9,transparent 70%);animation:drift 24s ease-in-out infinite alternate;will-change:transform}
+@keyframes drift{0%{transform:translate3d(-4%,-3%,0) rotate(0) scale(1)}50%{transform:translate3d(5%,4%,0) rotate(8deg) scale(1.1)}100%{transform:translate3d(-2%,6%,0) rotate(-6deg) scale(1.05)}}
+.dark{background:#000;position:relative;overflow:hidden;isolation:isolate}
+.dark::before,.dark::after{content:"";position:absolute;z-index:-1;width:55vmax;height:55vmax;border-radius:50%;filter:blur(80px);pointer-events:none}
+.dark::before{background:radial-gradient(circle,#E7B2A4,transparent 65%);opacity:.22;top:-22vmax;left:-16vmax;animation:orb1 18s ease-in-out infinite alternate}
+.dark::after{background:radial-gradient(circle,#ff8f78,transparent 65%);opacity:.14;bottom:-26vmax;right:-16vmax;animation:orb2 22s ease-in-out infinite alternate}
+@keyframes orb1{to{transform:translate3d(18vmax,12vmax,0) scale(1.15)}}@keyframes orb2{to{transform:translate3d(-16vmax,-10vmax,0) scale(1.2)}}
+.dark h2.big{text-shadow:0 0 28px #E7B2A433}
+.dark em,.cta h2 em{background:none;color:var(--rose);text-shadow:0 0 10px #E7B2A4aa,0 0 36px #E7B2A466}
+.dark .btn.rose{box-shadow:0 0 18px #E7B2A488,0 0 48px #E7B2A444;animation:neon 3s ease-in-out infinite alternate}
+@keyframes neon{to{box-shadow:0 0 28px #E7B2A4cc,0 0 70px #E7B2A466}}
+.st{border-top-color:#E7B2A488;box-shadow:0 -1px 12px -4px #E7B2A4}.st::before{box-shadow:0 0 12px 2px var(--rose)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
+.sc{padding:34px 28px 28px;border-radius:28px;background:linear-gradient(160deg,#E7B2A41f,#E7B2A405);border:1px solid #E7B2A440;backdrop-filter:blur(8px);transition:.4s;box-shadow:inset 0 0 30px #E7B2A40d}
+.sc:hover{border-color:#E7B2A4cc;box-shadow:0 0 30px #E7B2A433,inset 0 0 40px #E7B2A414;transform:translateY(-4px)}
+.ring{position:relative;width:min(220px,62%);margin:0 auto 26px;aspect-ratio:1}
+.ring svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 6px var(--c)) drop-shadow(0 0 20px #E7B2A488)}
+.ring circle{fill:none;stroke-width:8}.ring .t{stroke:#E7B2A42e}
+.ring .v{stroke:var(--c);stroke-linecap:round;stroke-dasharray:440;stroke-dashoffset:440}
+.ring .num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:500;font-size:clamp(44px,5vw,68px);letter-spacing:-.05em;text-shadow:0 0 18px #E7B2A4aa}
+.sc h3{font-weight:500;font-size:clamp(22px,2vw,30px);letter-spacing:-.03em;line-height:1.1;margin-bottom:12px}
+.sc p{font-size:15px}.src{margin-top:20px;padding-top:14px;border-top:1px solid #E7B2A433;font-size:12px;color:#a8977f}
+@media(max-width:860px){.stats{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){body::before,.dark::before,.dark::after,.dark .btn.rose{animation:none}}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <a class="logo" href="#top">Victória Azevedo</a>
+  <div class="nv"><a class="pill" href="#dados">Dados</a><a class="pill" href="#servicos">Serviços</a><a class="pill" href="#metodo">Método</a><a class="pill wa" href="#contato">Contato</a></div>
+</nav>
+
+<header class="tun" id="top">
+ <div class="stick">
+  <canvas id="cv" aria-hidden="true"></canvas><div class="halo"></div>
+  <div class="ov" id="o1">
+    <span class="lab" style="margin:0">Consultoria de AI Commerce</span>
+    <h1>Quando a IA recomendar produtos, a sua marca estará na resposta?</h1>
+    <p>Preparo marcas e empresas para a nova era de descoberta, recomendação e compra mediada por inteligência artificial.</p>
+    <div class="row"><a class="btn" href="https://wa.me/5519982037052?text=Ol%C3%A1%2C%20Vict%C3%B3ria!%20Quero%20um%20diagn%C3%B3stico%20de%20visibilidade%20da%20minha%20marca%20em%20IA." target="_blank" rel="noopener">Falar no WhatsApp →</a><a class="btn ghost" href="#servicos">Ver como ajudo</a></div>
+  </div>
+  <div class="ov" id="o2">
+    <h2>As pessoas já perguntam. <em>A IA já responde.</em></h2>
+    <p>Metade dos consumidores norte-americanos que já usaram IA comprou depois de pesquisar com ela. <a href="#dados" style="text-decoration:underline">Veja os dados</a>.</p>
+    <a class="btn rose" href="https://wa.me/5519982037052?text=Ol%C3%A1%2C%20Vict%C3%B3ria!%20Quero%20colocar%20minha%20marca%20na%20resposta%20da%20IA." target="_blank" rel="noopener" style="color:#000">Quero minha marca na resposta →</a>
+  </div>
+  <div class="hint"><span id="h1">Role para entrar</span><span>IA · SEO · GEO · Marketplaces</span></div>
+  <div class="bar" id="bar"></div>
+ </div>
+</header>
+
+<section class="s">
+  <span class="lab rv">A mudança</span>
+  <h2 class="big rv">Antes, bastava ser <em>encontrada</em>. Agora, é preciso ser <em>compreendida</em>.</h2>
+  <div class="shift">
+    <div class="rv"><span class="lab">Até ontem</span><b>Otimizar para pessoas</b><p>Buscadores e marketplaces eram o caminho: aparecer bem nas páginas de resultado.</p></div>
+    <div class="rv new"><span class="lab">A partir de agora</span><b>Otimizar também para sistemas de IA</b><p>Antes de a pessoa chegar à sua loja, uma IA já interpretou o seu produto e decidiu se ele merece ser considerado.</p></div>
+  </div>
+  <p class="lead rv">Se a IA não entende o que você vende, para quem e por que é melhor, ela recomenda quem entende. Meu trabalho é fazer sua marca ser entendida, lembrada e escolhida.</p>
+</section>
+
+<section class="s dark" id="dados">
+  <span class="lab rv">Os dados</span>
+  <h2 class="big rv">A IA já é um canal real de <em>descoberta, pesquisa e compra.</em></h2>
+  <p class="lead rv">Os consumidores já usam inteligência artificial para encontrar, comparar e comprar produtos. Quem não está nessa conversa fica fora da decisão, e nem percebe a venda que perdeu.</p>
+  <div class="stats">
+    <article class="sc rv"><div class="ring" data-v="50" style="--c:#E7B2A4"><svg viewBox="0 0 180 180"><circle class="t" cx="90" cy="90" r="70"/><circle class="v" cx="90" cy="90" r="70" transform="rotate(-90 90 90)"/></svg><div class="num"><span class="n">0</span>%</div></div><h3>Já compraram após pesquisar com IA</h3><p>Metade dos consumidores norte-americanos que já experimentaram ferramentas de IA afirmou ter feito uma compra depois de usá-las na pesquisa.</p><div class="src">Fonte: Semrush, março de 2026 · 1.030 consumidores</div></article>
+    <article class="sc rv"><div class="ring" data-v="43" style="--c:#FEEFDD"><svg viewBox="0 0 180 180"><circle class="t" cx="90" cy="90" r="70"/><circle class="v" cx="90" cy="90" r="70" transform="rotate(-90 90 90)"/></svg><div class="num"><span class="n">0</span>%</div></div><h3>Descobriram uma nova marca por meio da IA</h3><p>A IA já funciona como canal de descoberta de marcas, inclusive daquelas que o consumidor ainda não conhecia.</p><div class="src">Fonte: Semrush, março de 2026 · 1.030 consumidores</div></article>
+    <article class="sc rv"><div class="ring" data-v="55" style="--c:#f4b9a6"><svg viewBox="0 0 180 180"><circle class="t" cx="90" cy="90" r="70"/><circle class="v" cx="90" cy="90" r="70" transform="rotate(-90 90 90)"/></svg><div class="num"><span class="n">0</span>%</div></div><h3>Pesquisam produtos com IA pelo menos toda semana</h3><p>Entre quem já usou IA, mais da metade relatou esse hábito. A IA participa da comparação e da avaliação de alternativas, não só de perguntas genéricas.</p><div class="src">Fonte: Semrush, março de 2026 · 1.030 consumidores</div></article>
+  </div>
+  <div class="rv" style="margin-top:64px;text-align:center"><h3 style="font-weight:500;font-size:clamp(26px,3.4vw,54px);letter-spacing:-.04em;line-height:1.05;max-width:16em;margin:0 auto 28px">Cada semana, mais compras começam numa pergunta à IA. <em>A sua marca está na resposta?</em></h3><a class="btn rose" href="https://wa.me/5519982037052?text=Ol%C3%A1%2C%20Vict%C3%B3ria!%20Vi%20os%20dados%20e%20quero%20saber%20se%20minha%20marca%20aparece%20na%20IA." target="_blank" rel="noopener">Descobrir se minha marca aparece →</a></div>
+</section>
+
+<section class="s" id="servicos">
+  <span class="lab rv">O que eu faço</span>
+  <h2 class="big rv">Dados que viram ações práticas.</h2>
+  <div class="sv">
+    <a class="r rv" href="#contato"><i>01</i><h3>Inteligência competitiva</h3><p>Quem aparece no seu lugar, por que aparece e onde estão as brechas.</p></a>
+    <a class="r rv" href="#contato"><i>02</i><h3>Visibilidade em IA</h3><p>Análise de como os sistemas de IA enxergam, descrevem e recomendam sua marca hoje.</p></a>
+    <a class="r rv" href="#contato"><i>03</i><h3>Produtos e catálogos</h3><p>Títulos, atributos e conteúdo organizados para que a IA compreenda cada produto.</p></a>
+    <a class="r rv" href="#contato"><i>04</i><h3>SEO e GEO</h3><p>Presença otimizada para buscadores tradicionais e para mecanismos generativos.</p></a>
+    <a class="r rv" href="#contato"><i>05</i><h3>Estratégia de marketplaces</h3><p>Oportunidades priorizadas para vender mais onde a jornada de compra acontece.</p></a>
+  </div>
+  <div class="rv" style="margin-top:44px"><a class="btn" href="#contato">Descobrir por onde começar →</a></div>
+</section>
+
+<section class="s dark" id="metodo">
+  <span class="lab rv">Método</span>
+  <h2 class="big rv" style="max-width:14em">Do diagnóstico ao resultado acompanhado.</h2>
+  <div class="steps">
+    <div class="st rv"><span class="lab" style="margin:0">01</span><b>Entender</b><p>Mapeio sua visibilidade em IA e a concorrência.</p></div>
+    <div class="st rv"><span class="lab" style="margin:0">02</span><b>Priorizar</b><p>Transformo dados em oportunidades claras, em ordem de impacto.</p></div>
+    <div class="st rv"><span class="lab" style="margin:0">03</span><b>Implementar</b><p>Melhorias em produtos, catálogos, SEO, GEO e marketplaces.</p></div>
+    <div class="st rv"><span class="lab" style="margin:0">04</span><b>Acompanhar</b><p>Medimos, ajustamos e repetimos o que funciona.</p></div>
+  </div>
+  <div class="rv" style="margin-top:56px"><a class="btn rose" href="https://wa.me/5519982037052?text=Ol%C3%A1%2C%20Vict%C3%B3ria!%20Quero%20entender%20o%20m%C3%A9todo." target="_blank" rel="noopener">Começar pelo passo 01 →</a></div>
+</section>
+
+<section class="s">
+  <span class="lab rv">Dúvidas comuns</span>
+  <h2 class="big rv" style="max-width:12em">Antes de decidir.</h2>
+  <div class="faq">
+    <details class="rv"><summary>Já invisto em SEO. Isso não basta?</summary><p>SEO continua essencial, mas é a base. A IA lê, resume e compara de outro jeito. Por isso integro SEO e GEO, para você ser encontrada e também compreendida.</p></details>
+    <details class="rv"><summary>Isso serve para a minha marca ou empresa?</summary><p>Serve para marcas e empresas que vendem produtos e querem ser consideradas quando a descoberta e a compra passam por sistemas de IA.</p></details>
+    <details class="rv"><summary>Como sei se está funcionando?</summary><p>Acompanho resultados ao longo do trabalho, com indicadores claros e ajustes a cada ciclo. Nada de relatório que ninguém lê.</p></details>
+    <details class="rv"><summary>Por onde começo?</summary><p>Uma conversa rápida no WhatsApp. Você conta o que vende e onde vende, e eu aponto o ponto de partida de maior impacto.</p></details>
+  </div>
+</section>
+
+<section class="dark cta" id="contato">
+  <h2 class="rv">Seja a marca que a IA <em>recomenda.</em></h2>
+  <p class="rv">Quem se prepara agora chega na frente quando a recomendação por IA virar rotina. Vamos conversar sobre a sua marca.</p>
+  <div class="row rv"><a class="btn rose" href="https://wa.me/5519982037052?text=Ol%C3%A1%2C%20Vict%C3%B3ria!%20Vim%20pela%20landing%20page%20e%20quero%20conversar." target="_blank" rel="noopener">Chamar no WhatsApp →</a><a class="btn ghost" style="color:var(--bg);box-shadow:inset 0 0 0 1px var(--bg)" href="mailto:victoria.csl.azevedo@gmail.com?subject=Consultoria%20de%20AI%20Commerce">Enviar e-mail</a></div>
+  <div class="ct rv"><a href="https://wa.me/5519982037052" target="_blank" rel="noopener">(19) 98203-7052</a><a href="mailto:victoria.csl.azevedo@gmail.com">victoria.csl.azevedo@gmail.com</a><a href="https://instagram.com/byvictoriazevedo" target="_blank" rel="noopener">Instagram</a></div>
+  <footer style="margin-top:80px;padding-left:0;padding-right:0"><span>© 2026 Victória Azevedo</span><span>Consultoria de AI Commerce</span></footer>
+</section>
+
+<a class="fab" id="fab" href="https://wa.me/5519982037052?text=Ol%C3%A1%2C%20Vict%C3%B3ria!" target="_blank" rel="noopener">WhatsApp</a>
+
+<script>
+(function(){
+var cv=document.getElementById('cv'),ctx=cv.getContext('2d'),tun=document.querySelector('.tun'),o1=document.getElementById('o1'),o2=document.getElementById('o2'),bar=document.getElementById('bar'),nav=document.getElementById('nav'),fab=document.getElementById('fab');
+var Q=['melhor tênis para corrida','presente até R$ 200','cafeteira silenciosa','protetor solar para pele sensível','mochila para notebook 15"','shampoo sem sulfato','cadeira ergonômica barata','vale a pena essa marca?','kit skincare iniciante','fone com bom cancelamento','melhor custo-benefício','qual marca recomendam?'];
+var R=['✓ Sua marca recomendada','✓ Produto bem compreendido','✓ Escolhida pela IA'];
+var seed=7;function rnd(){seed=(seed*16807)%2147483647;return (seed-1)/2147483646}
+var N=44,C=[];for(var i=0;i<N;i++){var a=i*2.39996+(rnd()-.5)*.5,hit=i%7===3;C.push({a:a,r:3.2+rnd()*2.6,z:3+i*(58/N),t:hit?R[i%3]:Q[i%Q.length],hit:hit,rot:(rnd()-.5)*.14})}
+var W,H,D,p=0,mx=0,my=0,tx=0,ty=0,dirty=1,rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function sm(a,b,x){x=Math.max(0,Math.min(1,(x-a)/(b-a)));return x*x*(3-2*x)}
+function size(){D=Math.min(devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*D;cv.height=H*D;dirty=1}
+function rr(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath()}
+function draw(){
+ ctx.setTransform(D,0,0,D,0,0);ctx.clearRect(0,0,W,H);
+ var f=Math.min(W,H)*(W<H?.9:1.15),port=W<H,cam=p*54,cx=W/2-mx*40,cy=H/2-my*26;
+ var list=C.map(function(c){return{c:c,d:c.z-cam}}).filter(function(o){return o.d>.5&&o.d<46}).sort(function(a,b){return b.d-a.d});
+ list.forEach(function(o){var c=o.c,d=o.d,k=f/d,ex=port?.62:1.5,ey=port?1.5:1;
+  var x=Math.cos(c.a)*c.r*ex,y=Math.sin(c.a)*c.r*ey*.78;
+  var al=sm(.5,2,d)*(1-sm(20,46,d));if(al<.02)return;
+  var w=(port?2.2:2.8)*k,h=.62*k*(port?1.15:1),sx=cx+x*k,sy=cy+y*k;
+  ctx.save();ctx.globalAlpha=al;ctx.translate(sx,sy);ctx.rotate(c.rot);
+  ctx.fillStyle=c.hit?'#E7B2A4':'#fff';rr(-w/2,-h/2,w,h,h/2);ctx.fill();
+  ctx.fillStyle='#000';ctx.font='500 '+Math.max(5,h*.34)+'px Geist,system-ui,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillText(c.t,0,0,w*.88);ctx.restore()})
+}
+function frame(){if(!dirty)return;dirty=0;mx+=(tx-mx)*.08;my+=(ty-my)*.08;if(Math.abs(tx-mx)>.002||Math.abs(ty-my)>.002)dirty=1;draw();if(dirty)requestAnimationFrame(frame)}
+function req(){if(!dirty||0){}dirty=1;requestAnimationFrame(frame)}
+var lastY=0;
+function onScroll(){
+ var y=scrollY,span=tun.offsetHeight-innerHeight;p=Math.max(0,Math.min(1,y/span));
+ o1.style.opacity=1-sm(.05,.3,p);o1.style.transform='translateY('+(-30*sm(.05,.3,p))+'px)';o1.style.pointerEvents=p>.25?'none':'auto';
+ var q=sm(.68,.9,p);o2.style.opacity=q;o2.style.transform='translateY('+(24*(1-q))+'px)';o2.style.pointerEvents=q>.5?'auto':'none';
+ bar.style.width=(p*100)+'%';
+ nav.classList.toggle('hide',y>innerHeight*.5&&y>lastY);nav.classList.toggle('veil',y>innerHeight*.5&&y<lastY);
+ fab.classList.toggle('on',y>innerHeight*.9);lastY=y;req()}
+addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',function(){size();req()});
+if(!rm&&matchMedia('(pointer:fine)').matches)addEventListener('pointermove',function(e){tx=e.clientX/innerWidth-.5;ty=e.clientY/innerHeight-.5;req()});
+var so=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;so.unobserve(e.target);var el=e.target,v=+el.dataset.v,c=el.querySelector('circle.v'),n=el.querySelector('.n');
+ if(rm){c.style.strokeDashoffset=440*(1-v/100);n.textContent=v;return}
+ c.style.transition='none';var t0=performance.now();(function s(t){var k=Math.min(1,(t-t0)/1800),k2=1-Math.pow(1-k,3);c.style.strokeDashoffset=440*(1-k2*v/100);n.textContent=Math.round(k2*v);if(k<1)requestAnimationFrame(s)})(t0)})},{threshold:.4});
+document.querySelectorAll('.ring').forEach(function(r){so.observe(r)});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.rv').forEach(function(el,i){el.style.transitionDelay=(i%4)*.06+'s';io.observe(el)});
+(document.fonts&&document.fonts.ready||Promise.resolve()).then(function(){size();onScroll();req()});
+size();onScroll();req();
+})();
+</script>
+</body>
+</html>
